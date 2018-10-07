@@ -28,7 +28,7 @@ class TechesController < ApplicationController
 
     respond_to do |format|
       if @tech.save
-        format.html { redirect_to @teches, notice: 'Tech was successfully created.' }
+        format.html { redirect_to teches_path, notice: 'Tech was successfully created.' }
         format.json { render :show, status: :created, location: @tech }
       else
         format.html { render :new }
