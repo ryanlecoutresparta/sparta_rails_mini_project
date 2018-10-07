@@ -22,8 +22,8 @@
 </p>
 
 <p>
-  <strong>Prof pic:</strong>
-  <%= @user.prof_pic %>
+  <strong>Prof pic:</strong><br>
+  <%= image_tag @user.prof_pic, class: 'profile_picture2' %> 
 </p>
 
 <%= link_to 'Back', users_path %>
