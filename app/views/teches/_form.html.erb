@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with(model: tech, local: true) do |form| %>
   <% if tech.errors.any? %>
     <div id="error_explanation">
@@ -11,37 +12,38 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :technology %>
-    <%= form.text_field :technology %>
+    <%= form.text_field :technology, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :date_created %>
-    <%= form.date_select :date_created %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :version %>
-    <%= form.number_field :version %>
+    <%= form.number_field :version, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :desc %>
-    <%= form.text_area :desc %>
+    <%= form.text_area :desc, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :logo %>
-    <%= form.file_field :logo %>
+    <%= form.file_field :logo, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+  <div class="form-group">
+    <%= form.label :date_created %>
+    <%= form.date_select :date_created, class: 'form-control' %>
   </div>
+
+  <%= form.number_field :user_id, :type => 'hidden', :value => current_user.id %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+
+</div>
