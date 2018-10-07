@@ -27,8 +27,25 @@
 
 <p>
   <strong>User:</strong>
-  <%= @tech.user_id %>
+  <%= @tech.user.first_name %>
 </p>
+
+<ul class="list-group">
+<% @tech.comments.each do |comment| %>
+  <li class="list-group-item">
+    <%= link_to edit_tech_comment_path(@tech, comment) do %>
+      <%= comment.body %>
+    <% end %>
+    <br>
+    Posted By:
+    <%= link_to user_path(comment.user.id) do %>
+      <% comment.user.first_name %>
+    <% end %>
+    <br>
+  </li>
+<% end %>
+<br>
+</ul>
 
 <%= link_to 'Edit', edit_tech_path(@tech) %> |
 <%= link_to 'Back', teches_path %>
