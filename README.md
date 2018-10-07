@@ -1,4 +1,4 @@
-## Sparta Rails Blog Homework
+## Sparta Rails Technology Homework
 
 ##### Description: I made a simple application using ruby on rails that allows the user to create a user account and view technologies on the app and add to them, whilst being limited to only being able to edit their own submitted tech. They can also leave comments on other users' submissions - along with being able to view their profiles.
 **Creator: Ryan Lecoutre**
