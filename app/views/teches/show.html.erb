@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="container text-center">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -31,16 +31,35 @@
   <%= @tech.user.first_name %>
 </p>
 
+<br><br>
+<h4>Comments Section:</h4>
+
 <ul class="list-group">
 <% @tech.comments.each do |comment| %>
   <li class="list-group-item">
-    <%= link_to edit_tech_comment_path(@tech, comment) do %>
+    <% if user_signed_in? %>
+      <% if current_user.id == comment.user_id%>
+        <%= link_to edit_tech_comment_path(@tech, comment) do %>
+          <%= comment.body %>
+        <% end %>
+        <br>
+        Posted By:
+        <%= link_to user_path(comment.user.id) do %>
+          <% comment.user.first_name %>
+        <% end %>
+      <% else %>
+        <%= comment.body %>
+        <br>
+        Posted By:
+        <%= link_to user_path(comment.user.id) do %>
+          <% comment.user.first_name %>
+        <% end %>
+      <% end %>
+    <% elsif !user_signed_in? %>
       <%= comment.body %>
-    <% end %>
-    <br>
-    Posted By:
-    <%= link_to user_path(comment.user.id) do %>
-      <% comment.user.first_name %>
+      <br>
+      Posted By:
+      <%= comment.user.first_name %>
     <% end %>
     <br>
   </li>
@@ -48,6 +67,9 @@
 <br>
 </ul>
 
+<% if user_signed_in? %>
+  <%= link_to 'Add A New Comment', new_tech_comment_path(@tech) %> |
+<% end %>
 
 <% if user_signed_in? %>
   <% if current_user.id == @tech.user_id%>
